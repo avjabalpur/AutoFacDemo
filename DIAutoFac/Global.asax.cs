@@ -29,6 +29,8 @@ namespace DIAutoFac
             //Register Data dependency
             builder.RegisterModule(new DataModule("DIAutoFacContext"));
 
+            builder.RegisterType<Helper>().As<IHelper>();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

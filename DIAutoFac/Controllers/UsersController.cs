@@ -13,10 +13,12 @@ namespace DIAutoFac.Controllers
     public class UsersController : Controller
     {
         private DIAutoFacContext _db;
+        private IHelper _helper;
 
-        public UsersController(DIAutoFacContext db)
+        public UsersController(DIAutoFacContext db, IHelper helper)
         {
             _db = db;
+            _helper = helper;
         }
 
         //public UsersController()
@@ -28,6 +30,8 @@ namespace DIAutoFac.Controllers
         // GET: Users
         public ActionResult Index()
         {
+
+            _helper.log("Access the users");
             return View(_db.Users.ToList());
         }
 
